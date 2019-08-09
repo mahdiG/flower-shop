@@ -5,6 +5,18 @@ class Card extends LitElement {
     super();
   }
 
+  static get properties() {
+    return {
+      name: {
+        type: String
+      },
+      price: {},
+      url: {
+        type: String
+      }
+    };
+  }
+
   static get styles() {
     let imageUrl = css`"/assets/images/pinkflower.jpg"`;
 
@@ -41,30 +53,58 @@ class Card extends LitElement {
         background-position: center;
         transform: translateY(-70%);
         filter: blur(4px);
+        opacity: 0;
+        transition: opacity 500ms;
       }
 
       .card-content {
         position: absolute;
-        top: 0;
-        display: flex;
-        flex-direction: column;
         height: 100%;
         width: 100%;
         color: black;
-        background-color: rgba(250, 250, 250, 0.3);
+        background-color: rgba(250, 250, 250, 0.4);
         filter: blur(0);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        top: 100%;
+        transition: top 500ms;
+      }
+
+      .card:hover .blurry-background {
+        opacity: 1;
+        transition: all 500ms 200ms;
+      }
+
+      .card:hover .card-content {
+        top: 0;
+        transition: all 500ms;
+      }
+
+      .name,
+      .price {
+        margin: 0 1rem;
+        /* word-break: break-all; */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     `;
   }
 
   render() {
     return html`
-      <div class="card">
+      <div class="card" style="background-image: url(${this.url})">
         <div class="card-bottom">
-          <div class="blurry-background"></div>
+          <div
+            class="blurry-background"
+            style="background-image: url(${this.url})"
+          ></div>
           <div class="card-content">
-            <p class="name">گل سفید</p>
-            <p class="price">۲۵،۰۰۰ تومان</p>
+            <p class="name">${this.name}</p>
+            <p class="price">${this.price} تومان</p>
           </div>
         </div>
       </div>
