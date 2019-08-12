@@ -18,8 +18,6 @@ class Card extends LitElement {
   }
 
   static get styles() {
-    let imageUrl = css`"/assets/images/pinkflower.jpg"`;
-
     return css`
       .card {
         --scale: 15;
@@ -27,14 +25,13 @@ class Card extends LitElement {
         height: calc(1.3rem * var(--scale));
         border-radius: 2px;
         box-shadow: 0px 0px 10px 0px rgb(142, 142, 142);
-        /* box-shadow: 0px 0px 10px 0px black; */
 
         display: flex;
         flex-direction: column-reverse;
         position: relative;
         overflow: hidden;
 
-        background-image: url(${imageUrl});
+        background-color: white;
         background-size: cover;
         background-position: center;
       }
@@ -44,26 +41,12 @@ class Card extends LitElement {
         position: relative;
       }
 
-      .blurry-background {
-        height: calc(1.3rem * var(--scale));
-        width: 100%;
-        flex-grow: 1;
-        background-image: url(${imageUrl});
-        background-size: cover;
-        background-position: center;
-        transform: translateY(-70%);
-        filter: blur(4px);
-        opacity: 0;
-        transition: opacity 500ms;
-      }
-
       .card-content {
         position: absolute;
         height: 100%;
         width: 100%;
         color: black;
-        background-color: rgba(250, 250, 250, 0.4);
-        filter: blur(0);
+        background-color: rgba(250, 250, 250, 0.6);
 
         display: flex;
         flex-direction: column;
@@ -71,11 +54,6 @@ class Card extends LitElement {
 
         top: 100%;
         transition: top 500ms;
-      }
-
-      .card:hover .blurry-background {
-        opacity: 1;
-        transition: all 500ms 200ms;
       }
 
       .card:hover .card-content {
@@ -98,10 +76,6 @@ class Card extends LitElement {
     return html`
       <div class="card" style="background-image: url(${this.url})">
         <div class="card-bottom">
-          <div
-            class="blurry-background"
-            style="background-image: url(${this.url})"
-          ></div>
           <div class="card-content">
             <p class="name">${this.name}</p>
             <p class="price">${this.price} تومان</p>

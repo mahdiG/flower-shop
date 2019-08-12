@@ -14,8 +14,8 @@ class Header extends LitElement {
         justify-content: space-between;
         direction: rtl;
         height: 4rem;
-        background-color: #fae3f1;
-        opacity: 0.9;
+        /* background-color: #fae3f1; */
+        background-color: rgba(250, 250, 250, 0.3);
       }
       .menu-icon {
         margin-right: 1rem;
