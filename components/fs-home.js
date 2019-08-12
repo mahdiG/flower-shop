@@ -68,7 +68,7 @@ class Home extends LitElement {
   static get styles() {
     return css`
       .home {
-        margin: 1rem;
+        margin: var(--spacing);
       }
       .grid-container {
         display: grid;
@@ -82,6 +82,9 @@ class Home extends LitElement {
         .grid-container {
           grid-template-columns: repeat(1, auto);
           justify-content: center;
+        }
+        fs-card {
+          --scale: 17;
         }
       }
 

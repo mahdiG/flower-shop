@@ -19,8 +19,10 @@ class Card extends LitElement {
 
   static get styles() {
     return css`
-      .card {
+      :host {
         --scale: 15;
+      }
+      .card {
         width: calc(1rem * var(--scale));
         height: calc(1.3rem * var(--scale));
         border-radius: 2px;
