@@ -40,6 +40,16 @@ class Product extends LitElement {
       .product-description {
         width: 80%;
       }
+
+      /* Extra small devices (phones, 600px and down) */
+      @media only screen and (max-width: 600px) {
+        .main-container {
+          flex-direction: column;
+        }
+        fs-slide-card {
+          --scale: 85;
+        }
+      }
     `;
   }
 

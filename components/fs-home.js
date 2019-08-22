@@ -84,7 +84,7 @@ class Home extends LitElement {
           justify-content: center;
         }
         fs-card {
-          --scale: 17;
+          --scale: 85;
         }
       }
 
@@ -94,6 +94,9 @@ class Home extends LitElement {
           grid-template-columns: repeat(2, auto);
           justify-content: space-around;
         }
+        fs-card {
+          --scale: 40;
+        }
       }
 
       /* Large devices (laptops/desktops, 992px and up) */
@@ -102,6 +105,10 @@ class Home extends LitElement {
           display: grid;
           grid-template-columns: repeat(5, auto);
           /* grid-row-gap: 3rem; */
+        }
+
+        fs-card {
+          --scale: 17;
         }
       }
     `;

@@ -44,6 +44,19 @@ class SlideCard extends LitElement {
 
   static get styles() {
     return css`
+      :host {
+        --scale: 25;
+      }
+
+      .card {
+        position: relative;
+        border-radius: var(--border-radius);
+        box-shadow: 0px 0px 10px 0px rgb(142, 142, 142);
+        width: calc(1vw * var(--scale));
+        height: calc(1.3vw * var(--scale));
+        display: flex;
+        direction: ltr;
+      }
       .image {
         background-color: white;
         background-size: cover;
@@ -52,16 +65,6 @@ class SlideCard extends LitElement {
 
       .embla {
         overflow: hidden;
-      }
-      .card {
-        position: relative;
-        border-radius: var(--border-radius);
-        box-shadow: 0px 0px 10px 0px rgb(142, 142, 142);
-        --scale: 25;
-        width: calc(1rem * var(--scale));
-        height: calc(1.3rem * var(--scale));
-        display: flex;
-        direction: ltr;
       }
 
       .embla__container {
