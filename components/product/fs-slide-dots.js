@@ -4,8 +4,6 @@ import "embla-carousel";
 class SlideDots extends LitElement {
   constructor() {
     super();
-
-    console.log([...Array(this.dotsCount).keys()]);
   }
 
   static get properties() {

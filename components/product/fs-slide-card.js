@@ -27,16 +27,11 @@ class SlideCard extends LitElement {
   }
 
   firstUpdated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      console.log(`${propName} changed. oldValue: ${oldValue}`);
-    });
-
     const emblaNode = this.shadowRoot.querySelector(".embla");
     const options = { loop: true };
     var embla = EmblaCarousel(emblaNode, options);
 
     embla.on("select", () => {
-      console.log(`Selected snap index is ${embla.selectedScrollSnap()}!`);
       this.selectedImage = embla.selectedScrollSnap();
     });
   }

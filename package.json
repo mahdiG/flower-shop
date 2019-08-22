@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "embla-carousel": "^2.3.5",
-    "lit-element": "^2.2.1"
+    "lit-element": "^2.2.1",
+    "vazir-font": "^20.1.1"
   },
   "scripts": {
     "serve": "polymer serve --hostname 0.0.0.0"
