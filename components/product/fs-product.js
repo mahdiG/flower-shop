@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit-element";
 import "../fs-vertical-line";
+import "./fs-slide-card";
 
 class Product extends LitElement {
   constructor() {
@@ -57,7 +58,7 @@ class Product extends LitElement {
     return html`
       <div class="main-container">
         <div class="right-side">
-          <div class="image"></div>
+          <fs-slide-card></fs-slide-card>
         </div>
         <div class="vertical-line">
           <fs-vertical-line></fs-vertical-line>
