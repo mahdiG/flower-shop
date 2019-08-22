@@ -1,9 +1,29 @@
 import { LitElement, html, css } from "lit-element";
 import "embla-carousel";
+import "./fs-slide-dots";
 
 class SlideCard extends LitElement {
   constructor() {
     super();
+
+    this.images = [
+      "/assets/images/whiteflower.jpg",
+      "/assets/images/pinkflower.jpg",
+      "/assets/images/sunflower.jpg"
+    ];
+
+    this.selectedImage = 0;
+  }
+
+  static get properties() {
+    return {
+      images: {
+        type: Array
+      },
+      selectedImage: {
+        type: Number
+      }
+    };
   }
 
   firstUpdated(changedProperties) {
@@ -13,18 +33,24 @@ class SlideCard extends LitElement {
 
     const emblaNode = this.shadowRoot.querySelector(".embla");
     const options = { loop: true };
-    const embla = EmblaCarousel(emblaNode, options);
+    var embla = EmblaCarousel(emblaNode, options);
+
+    embla.on("select", () => {
+      console.log(`Selected snap index is ${embla.selectedScrollSnap()}!`);
+      this.selectedImage = embla.selectedScrollSnap();
+    });
   }
 
-  static get properties() {
-    return {};
+  selectedDotStyle(index) {
+    if (this.selectedImage === index) {
+      return "dot-selected";
+    }
   }
 
   static get styles() {
     return css`
       .image {
         background-color: white;
-        background-image: url("/assets/images/pinkflower.jpg");
         background-size: cover;
         background-position: center;
       }
@@ -33,6 +59,7 @@ class SlideCard extends LitElement {
         overflow: hidden;
       }
       .card {
+        position: relative;
         border-radius: var(--border-radius);
         box-shadow: 0px 0px 10px 0px rgb(142, 142, 142);
         --scale: 25;
@@ -51,6 +78,27 @@ class SlideCard extends LitElement {
         position: relative; /* Needed if loop: true */
         flex: 0 0 100%; /* Choose any width */
       }
+
+      .dots {
+        direction: rtl;
+        position: absolute;
+        bottom: 1rem;
+        right: 1%;
+        left: 1%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .dot {
+        width: 10px;
+        height: 10px;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 100%;
+        margin-right: 5px;
+      }
+      .dot-selected {
+        background-color: rgba(0, 0, 0);
+      }
     `;
   }
 
@@ -58,12 +106,21 @@ class SlideCard extends LitElement {
     return html`
       <div class="embla card">
         <div class="embla__container">
-          <div class="embla__slide image"></div>
-          <div class="embla__slide image"></div>
-          <div class="embla__slide image"></div>
+          ${this.images.map(image => {
+            return html`
+              <div
+                class="embla__slide image"
+                style="background-image: url(${image})"
+              />
+            `;
+          })}
         </div>
+
+        <fs-slide-dots
+          .selectedDot="${this.selectedImage}"
+          .dotsCount=${this.images.length}
+        ></fs-slide-dots>
       </div>
-      <div class="image"></div>
     `;
   }
 }
