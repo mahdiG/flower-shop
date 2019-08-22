@@ -33,17 +33,6 @@ class Product extends LitElement {
         padding: calc(var(--spacing) * 2);
       }
 
-      .image {
-        --scale: 25;
-        width: calc(1rem * var(--scale));
-        height: calc(1.3rem * var(--scale));
-        background-color: white;
-        background-image: url("/assets/images/pinkflower.jpg");
-        background-size: cover;
-        background-position: center;
-        border-radius: var(--border-radius);
-      }
-
       .vertical-line {
         height: 90%;
       }

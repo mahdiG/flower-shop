@@ -4,21 +4,17 @@ body {
 }
 
 html {
-  background-image: url("/assets/images/blur3.jpg");
-  background-size: cover;
-
-
-  /* background: linear-gradient(to right, #a1c4fd, #c2e9fb); */
-  /* background: linear-gradient(to right, #ecfdff, #e0ecff); */
-  /* background: linear-gradient(to right, #b6cbd8, #cecdbf); */
+  background: linear-gradient(315deg, lavenderblush 0%, #eed4fa 85%);
+  background-size: 100%;
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   html {
     background: linear-gradient(to right, #ecfdff, #e0ecff);
-}
+  }
 
-p {
-  margin: 0px;
+  p {
+    margin: 0px;
+  }
 }

@@ -27,7 +27,6 @@ class SlideCard extends LitElement {
         background-image: url("/assets/images/pinkflower.jpg");
         background-size: cover;
         background-position: center;
-        border-radius: var(--border-radius);
       }
 
       .embla {
