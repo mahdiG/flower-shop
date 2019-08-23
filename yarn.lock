@@ -2,6 +2,26 @@
 # yarn lockfile v1
 
 
+"@vaadin/router@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@vaadin/router/-/router-1.3.0.tgz#8b6a28ecd1dbc38980cd37aeaa0704fafda264b9"
+  integrity sha512-wSLVvLRxbxSBLkUUgcZikrOj1xlkwYo4LPUCstuvImbzGtSMjorFGM2M/oxjRDjb+xhXNoMpeFsShKq1ZoLe3Q==
+  dependencies:
+    "@vaadin/vaadin-usage-statistics" "^2.0.8"
+    path-to-regexp "2.4.0"
+
+"@vaadin/vaadin-development-mode-detector@^2.0.0":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@vaadin/vaadin-development-mode-detector/-/vaadin-development-mode-detector-2.0.4.tgz#f49c8009856bead92d248377c36b295b5aae78e5"
+  integrity sha512-S+PaFrZpK8uBIOnIHxjntTrgumd5ztuCnZww96ydGKXgo9whXfZsbMwDuD/102a/IuPUMyF+dh/n3PbWzJ6igA==
+
+"@vaadin/vaadin-usage-statistics@^2.0.8":
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@vaadin/vaadin-usage-statistics/-/vaadin-usage-statistics-2.0.9.tgz#95ed2af84dbf822627d1905951a32b2791e563a8"
+  integrity sha512-O/snTfWKNYVM37KuzmUSjxKjLHOij1Oo5stFG4yfL68NyXIJIpZqJla5LGc/hHXEIf9ok2DmFUmnmEUKF1CGMQ==
+  dependencies:
+    "@vaadin/vaadin-development-mode-detector" "^2.0.0"
+
 embla-carousel@^2.3.5:
   version "2.3.5"
   resolved "https://registry.yarnpkg.com/embla-carousel/-/embla-carousel-2.3.5.tgz#cc4913ed1743eb9a299699f29063e3cc0f095305"
@@ -18,6 +38,11 @@ lit-html@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-1.1.1.tgz#186ed6abcc70c0d24e1132b37411c3b2645ed1aa"
   integrity sha512-1WqhkPpj+CKwLRXCCbyRGnWkcFKE4ft2+j8C2zaXwFUK9I2vYDzTuDGPh0H9hZcDBEwoe6YpPC8AO5734EPORQ==
+
+path-to-regexp@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-2.4.0.tgz#35ce7f333d5616f1c1e1bfe266c3aba2e5b2e704"
+  integrity sha512-G6zHoVqC6GGTQkZwF4lkuEyMbVOjoBKAEybQUypI1WTkqinCOrq2x6U2+phkJ1XsEMTy4LjtwPI7HW+NVrRR2w==
 
 vazir-font@^20.1.1:
   version "20.1.1"

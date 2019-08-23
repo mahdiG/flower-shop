@@ -1,11 +1,19 @@
 import { LitElement, html, css } from "lit-element";
-import "./components/fs-header";
-import "./components/fs-home";
-import "./components/product/fs-product";
+import router from "./router";
+import "./src/components/fs-header";
+import "./src/components/fs-home";
+import "./src/components/product/fs-product";
 
 class App extends LitElement {
   constructor() {
     super();
+  }
+
+  firstUpdated() {
+    let outlet = this.shadowRoot.getElementById("outlet");
+    console.log("outlet: ", outlet);
+
+    router(outlet);
   }
 
   static get styles() {
@@ -20,10 +28,9 @@ class App extends LitElement {
   render() {
     return html`
       <fs-header></fs-header>
-      <fs-product></fs-product>
-      <!-- <fs-home></fs-home> -->
+      <div id="outlet"></div>
     `;
   }
 }
 
-customElements.define("my-app", App);
+customElements.define("fs-app", App);
