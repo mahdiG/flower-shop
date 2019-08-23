@@ -7,9 +7,10 @@ class Product extends LitElement {
     super();
   }
 
-  // firstUpdated(changedProperties) {
-  //   this.scrollToBottom();
-  // }
+  connectedCallback() {
+    super.connectedCallback();
+    console.log("this.location:", this.location.params.id);
+  }
 
   // scrollToBottom() {
   //   window.scrollTo(0, document.body.scrollHeight);
