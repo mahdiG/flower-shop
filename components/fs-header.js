@@ -9,6 +9,7 @@ class Header extends LitElement {
   static get styles() {
     return css`
       .header {
+        /* position: fixed; */
         display: flex;
         align-items: center;
         justify-content: space-between;

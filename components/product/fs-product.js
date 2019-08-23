@@ -7,6 +7,14 @@ class Product extends LitElement {
     super();
   }
 
+  // firstUpdated(changedProperties) {
+  //   this.scrollToBottom();
+  // }
+
+  // scrollToBottom() {
+  //   window.scrollTo(0, document.body.scrollHeight);
+  // }
+
   static get properties() {
     return {};
   }
@@ -17,15 +25,42 @@ class Product extends LitElement {
         display: flex;
         flex-direction: column;
       }
+
+      /* Large devices (laptops/desktops, 992px and up) */
+      @media only screen and (min-width: 992px) {
+        /* .scroller {
+          height: 100vh;
+          overflow-y: scroll;
+          scroll-snap-type: y mandatory;
+        }
+
+        .scroller section {
+          height: 100vh;
+          scroll-snap-align: start;
+        }
+
+        .first-section {
+          height: calc(100vh - 4rem);
+        } */
+      }
     `;
   }
 
   render() {
     return html`
-      <div class="container">
-        <fs-product-info></fs-product-info>
-        <fs-product-specs></fs-product-specs>
-      </div>
+      <!-- <div class="container scroller">
+        <fs-product-info class="section"></fs-product-info>
+        <fs-product-specs class="section"></fs-product-specs>
+      </div> -->
+
+      <article class="scroller">
+        <section class="first-section">
+          <fs-product-info></fs-product-info>
+        </section>
+        <section>
+          <fs-product-specs></fs-product-specs>
+        </section>
+      </article>
     `;
   }
 }
