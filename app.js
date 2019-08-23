@@ -20,8 +20,8 @@ class App extends LitElement {
   render() {
     return html`
       <fs-header></fs-header>
-      <!-- <fs-product></fs-product> -->
-      <fs-home></fs-home>
+      <fs-product></fs-product>
+      <!-- <fs-home></fs-home> -->
     `;
   }
 }

@@ -16,8 +16,10 @@ class Product extends LitElement {
       .main-container {
         display: flex;
         height: calc(100vh - 4rem);
+        flex-direction: column;
         /* align-items: center; */
       }
+
       .right-side {
         /* background-color: lightgreen; */
         flex-grow: 1;
@@ -41,13 +43,17 @@ class Product extends LitElement {
         width: 80%;
       }
 
-      /* Extra small devices (phones, 600px and down) */
-      @media only screen and (max-width: 600px) {
+      fs-slide-card {
+        --scale: 85;
+      }
+
+      /* Medium devices (landscape tablets, 768px and up) */
+      @media only screen and (min-width: 768px) {
         .main-container {
-          flex-direction: column;
+          flex-direction: row;
         }
         fs-slide-card {
-          --scale: 85;
+          --scale: 25;
         }
       }
     `;

@@ -51,7 +51,7 @@ class SlideCard extends LitElement {
       .card {
         position: relative;
         border-radius: var(--border-radius);
-        box-shadow: 0px 0px 10px 0px rgb(142, 142, 142);
+        box-shadow: 0px 0px 5px 0px rgb(142, 142, 142);
         width: calc(1vw * var(--scale));
         height: calc(1.3vw * var(--scale));
         display: flex;
