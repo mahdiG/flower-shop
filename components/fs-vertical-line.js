@@ -10,15 +10,18 @@ class VerticalLine extends LitElement {
   }
 
   static get styles() {
-    let color = css`hsla(0, 0%, 0%, 0.75)`;
-
     return css`
       :host {
-        /* --color: hsla(0, 0%, 0%, 0.75); */
         --color: gray;
+        --height: 100%;
+      }
+      .container {
+        height: 100%;
+        display: flex;
+        align-items: center;
       }
       .vertical-line {
-        height: 100%;
+        height: var(--height);
         width: 1px;
         background: #333;
 
@@ -46,7 +49,9 @@ class VerticalLine extends LitElement {
 
   render() {
     return html`
-      <div class="vertical-line"></div>
+      <div class="container">
+        <div class="vertical-line"></div>
+      </div>
     `;
   }
 }
