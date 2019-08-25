@@ -7,8 +7,6 @@ export default function(outletElement) {
   const router = new Router(outletElement);
   router.setRoutes([
     { path: "/", component: "fs-home" },
-    // 404 not found
-    { path: "(.*)", redirect: "/" },
     {
       path: "/product",
       children: [
@@ -17,6 +15,8 @@ export default function(outletElement) {
           component: "fs-product"
         }
       ]
-    }
+    },
+    // 404 not found
+    { path: "(.*)", redirect: "/" }
   ]);
 }

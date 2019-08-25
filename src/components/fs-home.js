@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element";
+import { Router } from "@vaadin/router";
 import "./fs-card";
 
 class Home extends LitElement {
@@ -7,48 +8,57 @@ class Home extends LitElement {
 
     this.images = [
       {
+        id: 1,
         name: "گل سفید",
         price: "۲۰۰۰۰",
         url: "/assets/images/whiteflower.jpg"
       },
       {
+        id: 2,
         name: "گل صورتی",
         price: "۴۰۰۰۰",
         url: "/assets/images/pinkflower.jpg"
       },
       {
+        id: 3,
         name:
           " شتخسی بشسیب شس یب شس یب شسی بش سی بش سیب ش سی ب شس یبشسیبگل آفتابگردووووووووووووووووووووووووووووووووووووووووون",
         price: "۱۲۰۰۰۰",
         url: "/assets/images/sunflower.jpg"
       },
       {
+        id: 3,
         name: "گل سفید",
         price: "۲۰۰۰۰",
         url: "/assets/images/whiteflower.jpg"
       },
       {
+        id: 3,
         name: "گل صورتی",
         price: "۴۰۰۰۰",
         url: "/assets/images/pinkflower.jpg"
       },
       {
+        id: 3,
         name:
           " شتخسی بشسیب شس یب شس یب شسی بش سی بش سیب ش سی ب شس یبشسیبگل آفتابگردووووووووووووووووووووووووووووووووووووووووون",
         price: "۱۲۰۰۰۰",
         url: "/assets/images/sunflower.jpg"
       },
       {
+        id: 3,
         name: "گل سفید",
         price: "۲۰۰۰۰",
         url: "/assets/images/whiteflower.jpg"
       },
       {
+        id: 3,
         name: "گل صورتی",
         price: "۴۰۰۰۰",
         url: "/assets/images/pinkflower.jpg"
       },
       {
+        id: 3,
         name:
           " شتخسی بشسیب شس یب شس یب شسی بش سی بش سیب ش سی ب شس یبشسیبگل آفتابگردووووووووووووووووووووووووووووووووووووووووون",
         price: "۱۲۰۰۰۰",
@@ -63,6 +73,12 @@ class Home extends LitElement {
         type: Array
       }
     };
+  }
+
+  navigateToProduct(id) {
+    console.log("navigating");
+
+    Router.go(`/product/${id}`);
   }
 
   static get styles() {
@@ -120,6 +136,7 @@ class Home extends LitElement {
         ${this.images.map(image => {
           return html`
             <fs-card
+              @click=${() => this.navigateToProduct(image.id)}
               class="grid-item"
               name=${image.name}
               price="${image.price}"
