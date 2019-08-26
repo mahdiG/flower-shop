@@ -86,6 +86,9 @@ class Home extends LitElement {
       .home {
         margin: var(--spacing);
       }
+      .grid-item {
+        cursor: pointer;
+      }
       .grid-container {
         display: grid;
         grid-template-columns: repeat(5, auto);
