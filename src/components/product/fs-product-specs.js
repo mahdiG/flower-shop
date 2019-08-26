@@ -1,13 +1,34 @@
 import { LitElement, html, css } from "lit-element";
 import "../fs-vertical-line";
+import "./fs-like";
 
 class ProductSpecs extends LitElement {
   constructor() {
     super();
+
+    this.likeCount = 600;
+    this.isLiked = false;
   }
 
   static get properties() {
-    return {};
+    return {
+      likeCount: { type: Number },
+      isLiked: { type: Boolean }
+    };
+  }
+
+  toggleLike(event) {
+    // Prevents event triggering twice.
+    event.preventDefault();
+
+    console.log("like is currently: ", this.isLiked);
+
+    this.isLiked = !this.isLiked;
+    if (this.isLiked) {
+      this.likeCount += 1;
+    } else {
+      this.likeCount -= 1;
+    }
   }
 
   static get styles() {
@@ -122,6 +143,11 @@ class ProductSpecs extends LitElement {
         margin-right: var(--spacing);
       }
 
+      .heart-icon {
+        display: flex;
+        align-items: center;
+      }
+
       .like-count {
         font-size: small;
       }
@@ -209,13 +235,12 @@ class ProductSpecs extends LitElement {
                   اضافه به سبد
                 </div>
                 <div class="like">
-                  <div class="icon-container">
-                    <img
-                      class="icon heart-icon"
-                      src="/assets/icons/heart.svg"
-                    />
+                  <div class="icon-container" @click=${this.toggleLike}>
+                    <div class="icon heart-icon">
+                      <fs-like .isLiked=${this.isLiked}></fs-like>
+                    </div>
                   </div>
-                  <p class="like-count">۶۰۰</p>
+                  <p class="like-count">${this.likeCount}</p>
                 </div>
                 <div class="icon-container">
                   <img class="icon share-icon" src="/assets/icons/share.svg" />
