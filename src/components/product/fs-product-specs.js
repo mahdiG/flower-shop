@@ -8,12 +8,14 @@ class ProductSpecs extends LitElement {
 
     this.likeCount = 600;
     this.isLiked = false;
+    this.isInCart = true;
   }
 
   static get properties() {
     return {
       likeCount: { type: Number },
-      isLiked: { type: Boolean }
+      isLiked: { type: Boolean },
+      isInCart: { type: Boolean }
     };
   }
 
@@ -29,6 +31,9 @@ class ProductSpecs extends LitElement {
     } else {
       this.likeCount -= 1;
     }
+  }
+  toggleCart() {
+    this.isInCart = !this.isInCart;
   }
 
   static get styles() {
@@ -157,6 +162,9 @@ class ProductSpecs extends LitElement {
         padding: calc(var(--spacing) / 2) var(--spacing);
         border-radius: var(--border-radius);
         cursor: pointer;
+        width: 100px;
+        display: flex;
+        justify-content: center;
       }
 
       fs-slide-card {
@@ -231,8 +239,8 @@ class ProductSpecs extends LitElement {
                 ۳۰۰،۰۰۰ تومان
               </p>
               <div class="icons-container">
-                <div class="cart-button">
-                  اضافه به سبد
+                <div class="cart-button" @click=${this.toggleCart}>
+                  ${this.isInCart ? "افزودن به سبد" : "حذف از سبد"}
                 </div>
                 <div class="like">
                   <div class="icon-container" @click=${this.toggleLike}>
