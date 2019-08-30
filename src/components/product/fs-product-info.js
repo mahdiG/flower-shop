@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element";
 import "../fs-vertical-line";
 import "./fs-slide-card";
-import "../fs-login-card";
+import "../login-card/fs-login-card";
 
 class ProductInfo extends LitElement {
   constructor() {

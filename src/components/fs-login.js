@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element";
-import "./fs-login-card";
+import "./login-card/fs-login-card";
 
 class Login extends LitElement {
   constructor() {
