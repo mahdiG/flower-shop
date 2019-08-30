@@ -5,6 +5,15 @@ class ConfirmationStep extends LitElement {
     super();
   }
 
+  changeStep() {
+    let event = new Event("change-step", {
+      detail: {
+        nextStep: 2
+      }
+    });
+    this.dispatchEvent(event);
+  }
+
   static get styles() {
     return css`
       :host {

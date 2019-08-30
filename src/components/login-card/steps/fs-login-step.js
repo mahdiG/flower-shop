@@ -6,6 +6,17 @@ class LoginStep extends LitElement {
     super();
   }
 
+  changeStep() {
+    console.log("changing step");
+
+    let myEvent = new CustomEvent("change-step", {
+      detail: {
+        nextStep: 1
+      }
+    });
+    this.dispatchEvent(myEvent);
+  }
+
   static get styles() {
     return css`
       :host {
@@ -61,7 +72,9 @@ class LoginStep extends LitElement {
         placeholder="۰۹۱۷۳۸۱۱۴۲۰"
         type="number"
       ></fs-input>
-      <button class="button">ارسال کد</button>
+      <button class="button" @click="${() => this.changeStep()}">
+        ارسال کد
+      </button>
     `;
   }
 }

@@ -6,6 +6,19 @@ class VerficationStep extends LitElement {
     super();
   }
 
+  static get properties() {
+    return {};
+  }
+
+  changeStep(step) {
+    let event = new Event("change-step", {
+      detail: {
+        nextStep: step
+      }
+    });
+    this.dispatchEvent(event);
+  }
+
   static get styles() {
     return css`
       :host {
