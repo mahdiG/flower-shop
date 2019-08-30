@@ -11,8 +11,6 @@ class App extends LitElement {
 
   firstUpdated() {
     let outlet = this.shadowRoot.getElementById("outlet");
-    console.log("outlet: ", outlet);
-
     router(outlet);
   }
 
@@ -21,6 +19,7 @@ class App extends LitElement {
       :host {
         --spacing: 1rem;
         --border-radius: 2px;
+        --box-shadow: 0px 0px 5px 0px rgb(142, 142, 142, 0.1);
       }
     `;
   }

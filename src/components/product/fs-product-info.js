@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element";
 import "../fs-vertical-line";
 import "./fs-slide-card";
+import "../fs-login-card";
 
 class ProductInfo extends LitElement {
   constructor() {
@@ -32,6 +33,7 @@ class ProductInfo extends LitElement {
         flex-grow: 1.5;
         flex-basis: 1rem;
         padding: calc(var(--spacing) * 2);
+        /* color: darkslategray; */
       }
 
       fs-slide-card {
@@ -61,6 +63,7 @@ class ProductInfo extends LitElement {
   render() {
     return html`
       <div class="main-container">
+        <fs-login-card></fs-login-card>
         <div class="right-side">
           <fs-slide-card></fs-slide-card>
         </div>
