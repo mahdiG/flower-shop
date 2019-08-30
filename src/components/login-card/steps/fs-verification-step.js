@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element";
+import "../../fs-input";
 
-class ConfirmationStep extends LitElement {
+class VerficationStep extends LitElement {
   constructor() {
     super();
   }
@@ -17,7 +18,7 @@ class ConfirmationStep extends LitElement {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: calc(var(--spacing) * 1);
+        margin-bottom: calc(var(--spacing) * 2);
       }
       .heading {
         margin: 0;
@@ -28,14 +29,20 @@ class ConfirmationStep extends LitElement {
         color: darkslategray;
       }
 
+      .change-number {
+        font-size: small;
+        cursor: pointer;
+        color: gray;
+      }
+
       .input-phone {
         /* width: 50vw; */
       }
 
       .buttons-container {
         display: flex;
-        justify-content: space-between;
-        margin-top: var(--spacing);
+        flex-direction: column;
+        margin-top: calc(var(--spacing) * 2);
       }
 
       .button {
@@ -49,14 +56,6 @@ class ConfirmationStep extends LitElement {
         color: darkslategray;
         width: 3rem;
       }
-
-      .button-green {
-        background-color: rgba(186, 255, 193, 1);
-        margin-left: var(--spacing);
-      }
-      .button-red {
-        background-color: rgba(255, 186, 212, 1);
-      }
     `;
   }
 
@@ -64,16 +63,24 @@ class ConfirmationStep extends LitElement {
     return html`
       <div class="info-container">
         <!-- Heading could be replaced by a photo. -->
-        <h1 class="heading">همین شماره؟</h1>
-        <h2 class="description">۰۹۱۰۰۸۰۱۲۳۲</h2>
+        <!-- <h1 class="heading">کد تایید</h1> -->
+        <h2 class="description">یک کد برای شماره ۰۹۱۷۳۸۱۱۴۲۰ ارسال شد</h2>
+        <p class="description change-number">اصلاح شماره تلفن؟</p>
+        <!-- <h2 class="description">یک کد شما پیامک شد</h2> -->
       </div>
 
+      <fs-input
+        class="input-phone"
+        label="شماره تلفن"
+        placeholder="۰۹۱۷۳۸۱۱۴۲۰"
+        type="number"
+      ></fs-input>
+
       <div class="buttons-container">
-        <button class="button button-green">درسته</button>
-        <button class="button button-red">اشتباهه</button>
+        <p class="description change-number">ارسال دوباره کد</p>
       </div>
     `;
   }
 }
 
-customElements.define("fs-confirmation-step", ConfirmationStep);
+customElements.define("fs-verfication-step", VerficationStep);

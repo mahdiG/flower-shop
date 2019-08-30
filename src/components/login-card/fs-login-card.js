@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element";
 import "./steps/fs-login-step";
 import "./steps/fs-confirmation-step";
+import "./steps/fs-verification-step";
 
 class LoginCard extends LitElement {
   constructor() {
@@ -48,7 +49,8 @@ class LoginCard extends LitElement {
       <div class="modal-background">
         <div class="card">
           <!-- <fs-login-step></fs-login-step> -->
-          <fs-confirmation-step></fs-confirmation-step>
+          <!-- <fs-confirmation-step></fs-confirmation-step> -->
+          <fs-verfication-step></fs-verfication-step>
         </div>
       </div>
     `;
