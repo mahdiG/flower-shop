@@ -55,7 +55,7 @@ class VerficationStep extends LitElement {
       .buttons-container {
         display: flex;
         flex-direction: column;
-        margin-top: calc(var(--spacing) * 2);
+        margin-top: var(--spacing);
       }
 
       .button {

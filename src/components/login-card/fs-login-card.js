@@ -60,8 +60,8 @@ class LoginCard extends LitElement {
         box-shadow: 0px 0px 10px 0px rgb(142, 142, 142, 1);
         border-radius: var(--border-radius);
         background-color: rgba(250, 250, 250, 0.8);
-        width: 500px;
-        height: 400px;
+        width: calc(1.5 * 25vw);
+        height: calc(1 * 25vw);
         z-index: 3;
       }
 

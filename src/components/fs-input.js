@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element";
+import mobileValidator from "../utils/validators/mobileValidator";
 
 class Input extends LitElement {
   constructor() {
@@ -18,6 +19,56 @@ class Input extends LitElement {
       },
       value: {}
     };
+  }
+
+  handleMobileInput(event) {
+    this.limitValueLength(event);
+    if (event.target.value.length === 11) {
+      mobileValidator(event.target.value);
+    }
+  }
+
+  limitValueLength(event) {
+    let maxLength = 11;
+    event.target.value = event.target.value.slice(0, maxLength);
+  }
+
+  renderMobileInput() {
+    return html`
+      <style>
+        .input {
+          direction: ltr;
+        }
+      </style>
+
+      <label class="label">${this.label}</label>
+      <input
+        class="input"
+        type="tel"
+        placeholder="09103801020"
+        @input=${this.handleMobileInput}
+      />
+    `;
+  }
+
+  render() {
+    return html`
+      <!-- <style>
+        .input {
+          direction: ${this.type === "number" ? "ltr" : "rtl"};
+        }
+      </style>
+
+      <label class="label">${this.label}</label>
+      <input
+        class="input"
+        .type=${this.type}
+        .placeholder=${this.placeholder}
+        @input=${this.limitValueLength}
+      /> -->
+
+      ${this.renderMobileInput()}
+    `;
   }
 
   static get styles() {
@@ -46,23 +97,6 @@ class Input extends LitElement {
       input[type="number"] {
         -moz-appearance: textfield; /* Firefox */
       }
-    `;
-  }
-
-  render() {
-    return html`
-      <style>
-        .input {
-          direction: ${this.type === "number" ? "ltr" : "rtl"};
-        }
-      </style>
-
-      <label class="label">شماره تلفن</label>
-      <input
-        class="input"
-        .type=${this.type}
-        .placeholder=${this.placeholder}
-      />
     `;
   }
 }
