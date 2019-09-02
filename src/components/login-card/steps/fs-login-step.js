@@ -7,8 +7,6 @@ class LoginStep extends LitElement {
   }
 
   changeStep() {
-    console.log("changing step");
-
     let myEvent = new CustomEvent("change-step", {
       detail: {
         nextStep: 1

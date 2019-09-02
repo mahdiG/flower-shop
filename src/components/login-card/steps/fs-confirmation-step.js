@@ -5,13 +5,13 @@ class ConfirmationStep extends LitElement {
     super();
   }
 
-  changeStep() {
-    let event = new Event("change-step", {
+  changeStep(step) {
+    let myEvent = new CustomEvent("change-step", {
       detail: {
-        nextStep: 2
+        nextStep: step
       }
     });
-    this.dispatchEvent(event);
+    this.dispatchEvent(myEvent);
   }
 
   static get styles() {
@@ -78,8 +78,12 @@ class ConfirmationStep extends LitElement {
       </div>
 
       <div class="buttons-container">
-        <button class="button button-green">درسته</button>
-        <button class="button button-red">اشتباهه</button>
+        <button class="button button-green" @click=${() => this.changeStep(2)}>
+          درسته
+        </button>
+        <button class="button button-red" @click=${() => this.changeStep(0)}>
+          اشتباهه
+        </button>
       </div>
     `;
   }

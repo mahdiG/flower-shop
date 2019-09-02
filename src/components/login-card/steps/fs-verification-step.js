@@ -10,13 +10,13 @@ class VerficationStep extends LitElement {
     return {};
   }
 
-  changeStep(step) {
-    let event = new Event("change-step", {
+  changeStep() {
+    let myEvent = new CustomEvent("change-step", {
       detail: {
-        nextStep: step
+        nextStep: 0
       }
     });
-    this.dispatchEvent(event);
+    this.dispatchEvent(myEvent);
   }
 
   static get styles() {
@@ -78,7 +78,9 @@ class VerficationStep extends LitElement {
         <!-- Heading could be replaced by a photo. -->
         <!-- <h1 class="heading">کد تایید</h1> -->
         <h2 class="description">یک کد برای شماره ۰۹۱۷۳۸۱۱۴۲۰ ارسال شد</h2>
-        <p class="description change-number">اصلاح شماره تلفن؟</p>
+        <p class="description change-number" @click=${this.changeStep}>
+          اصلاح شماره تلفن؟
+        </p>
         <!-- <h2 class="description">یک کد شما پیامک شد</h2> -->
       </div>
 

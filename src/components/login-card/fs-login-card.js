@@ -19,9 +19,6 @@ class LoginCard extends LitElement {
   }
 
   isStepActive(step) {
-    // console.log("step: ", step);
-    // console.log("this.currentStep: ", this.currentStep);
-
     if (step === this.currentStep) {
       return true;
     } else {
@@ -31,8 +28,6 @@ class LoginCard extends LitElement {
 
   changeStep(event) {
     let nextStep = event.detail.nextStep;
-    console.log("next step: ", nextStep);
-
     this.currentStep = nextStep;
   }
 
@@ -72,14 +67,14 @@ class LoginCard extends LitElement {
 
       .step {
         position: absolute;
-        transform: translateX(100%);
         opacity: 0;
-        transition: all 500ms;
+        transform: translateX(2000px);
+        transition: opacity 500ms;
       }
       .step-active {
-        transform: translateX(0%);
         opacity: 1;
-        transition: all 1s 500ms;
+        transform: translateX(0%);
+        transition: opacity 500ms;
       }
     `;
   }
