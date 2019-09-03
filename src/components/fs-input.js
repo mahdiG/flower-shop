@@ -5,7 +5,7 @@ class Input extends LitElement {
   constructor() {
     super();
 
-    this.error = "";
+    this.hasError = false;
   }
 
   static get properties() {
@@ -20,22 +20,41 @@ class Input extends LitElement {
         type: String
       },
       value: {},
-      error: {
+      errorText: {
+        type: String
+      },
+      name: {
         type: String
       }
     };
   }
 
+  // TODO: handle mobile errors separately as it's the only exception.
+
+  updateValue(event) {
+    let myEvent = new CustomEvent("change", {
+      detail: {
+        value: event.target.value,
+        name: this.name,
+        hasError: this.hasError
+      }
+    });
+    this.dispatchEvent(myEvent);
+  }
+
   handleMobileInput(event) {
     this.limitValueLength(event);
+    this.updateValue(event);
     if (event.target.value.length === 11) {
       let isValid = mobileValidator(event.target.value);
 
       if (!isValid) {
-        this.error = "شماره تلفن‌همراه اشتباه است";
+        this.hasError = true;
+      } else {
+        this.hasError = false;
       }
     } else {
-      this.error = null;
+      // this.errorText = null;
     }
   }
 
@@ -60,7 +79,7 @@ class Input extends LitElement {
           placeholder="09103801020"
           @input=${this.handleMobileInput}
         />
-        <small class="error-text">${this.error}</small>
+        <small class="error-text">${this.errorText}</small>
       </div>
     `;
   }
@@ -116,6 +135,7 @@ class Input extends LitElement {
       .error-text {
         color: #ff005d;
         font-size: 0.7rem;
+        /* height: 0.7rem; */
       }
     `;
   }

@@ -4,6 +4,10 @@ import "../../fs-input";
 class LoginStep extends LitElement {
   constructor() {
     super();
+
+    this.isButtonDisabled = true;
+    this.phoneNumber = null;
+    this.errors = [];
   }
 
   changeStep() {
@@ -13,6 +17,60 @@ class LoginStep extends LitElement {
       }
     });
     this.dispatchEvent(myEvent);
+  }
+
+  handleErrors(event) {
+    let { value, name, hasError } = event.detail;
+    console.log("event.detail: ", event.detail);
+
+    let errors = this.errors.filter(error => error.name !== name);
+
+    errors = [
+      ...errors,
+      {
+        name,
+        value,
+        hasError
+      }
+    ];
+
+    this.errors = errors;
+
+    console.log("this.errors: ", this.errors);
+  }
+
+  checkForErrors() {}
+
+  handlePhoneNumber(event) {
+    this.handleErrors(event);
+    let newPhoneNumber = event.detail.value;
+    this.phoneNumber = newPhoneNumber;
+  }
+
+  render() {
+    return html`
+      <div class="info-container">
+        <!-- Heading could be replaced by a photo. -->
+        <h1 class="heading">ورود</h1>
+        <p class="description">شماره تلفن خود را وارد کنید</p>
+      </div>
+      <fs-input
+        class="input-phone"
+        label="شماره تلفن"
+        name="phoneNumber"
+        placeholder="۰۹۱۷۳۸۱۱۴۲۰"
+        type="number"
+        .value=${this.phoneNumber}
+        @change=${this.handlePhoneNumber}
+      ></fs-input>
+      <button
+        class="button"
+        ?disabled=${this.isButtonDisabled}
+        @click="${() => this.changeStep()}"
+      >
+        ارسال کد
+      </button>
+    `;
   }
 
   static get styles() {
@@ -54,25 +112,11 @@ class LoginStep extends LitElement {
         color: darkslategray;
         width: max-content;
       }
-    `;
-  }
 
-  render() {
-    return html`
-      <div class="info-container">
-        <!-- Heading could be replaced by a photo. -->
-        <h1 class="heading">ورود</h1>
-        <p class="description">شماره تلفن خود را وارد کنید</p>
-      </div>
-      <fs-input
-        class="input-phone"
-        label="شماره تلفن"
-        placeholder="۰۹۱۷۳۸۱۱۴۲۰"
-        type="number"
-      ></fs-input>
-      <button class="button" @click="${() => this.changeStep()}">
-        ارسال کد
-      </button>
+      .button:disabled {
+        cursor: not-allowed;
+        color: lightgray;
+      }
     `;
   }
 }
