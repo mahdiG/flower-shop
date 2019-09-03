@@ -39,7 +39,7 @@ class LoginStep extends LitElement {
       }
 
       .input-phone {
-        /* width: 50vw; */
+        width: 50%;
       }
 
       .button {

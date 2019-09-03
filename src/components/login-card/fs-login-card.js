@@ -34,6 +34,9 @@ class LoginCard extends LitElement {
   static get styles() {
     return css`
       .modal-background {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position: fixed;
         top: 0;
         z-index: 999;
@@ -50,8 +53,6 @@ class LoginCard extends LitElement {
       .card {
         overflow: hidden;
         position: relative;
-        right: 30%;
-        top: 20%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -66,6 +67,7 @@ class LoginCard extends LitElement {
       }
 
       .step {
+        width: 100%;
         position: absolute;
         opacity: 0;
         transform: translateX(2000px);

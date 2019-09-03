@@ -4,6 +4,8 @@ import mobileValidator from "../utils/validators/mobileValidator";
 class Input extends LitElement {
   constructor() {
     super();
+
+    this.error = "";
   }
 
   static get properties() {
@@ -17,14 +19,23 @@ class Input extends LitElement {
       type: {
         type: String
       },
-      value: {}
+      value: {},
+      error: {
+        type: String
+      }
     };
   }
 
   handleMobileInput(event) {
     this.limitValueLength(event);
     if (event.target.value.length === 11) {
-      mobileValidator(event.target.value);
+      let isValid = mobileValidator(event.target.value);
+
+      if (!isValid) {
+        this.error = "شماره تلفن‌همراه اشتباه است";
+      }
+    } else {
+      this.error = null;
     }
   }
 
@@ -41,13 +52,16 @@ class Input extends LitElement {
         }
       </style>
 
-      <label class="label">${this.label}</label>
-      <input
-        class="input"
-        type="tel"
-        placeholder="09103801020"
-        @input=${this.handleMobileInput}
-      />
+      <div class="container">
+        <label class="label">${this.label}</label>
+        <input
+          class="input"
+          type="tel"
+          placeholder="09103801020"
+          @input=${this.handleMobileInput}
+        />
+        <small class="error-text">${this.error}</small>
+      </div>
     `;
   }
 
@@ -73,12 +87,15 @@ class Input extends LitElement {
 
   static get styles() {
     return css`
+      .container {
+        display: flex;
+        flex-direction: column;
+      }
       .label {
         font-size: small;
         color: darkslategray;
       }
       .input {
-        width: 100%;
         outline: none;
         border: none;
         /* border: 1px solid darkslategray; */
@@ -86,16 +103,19 @@ class Input extends LitElement {
         padding: calc(var(--spacing) / 1.5);
         background-color: rgba(250, 250, 250, 0.8);
       }
-
       /* remove numberic input arrows */
       input::-webkit-outer-spin-button,
       input::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
       }
-
       input[type="number"] {
         -moz-appearance: textfield; /* Firefox */
+      }
+
+      .error-text {
+        color: #ff005d;
+        font-size: 0.7rem;
       }
     `;
   }
