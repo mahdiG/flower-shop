@@ -6,6 +6,7 @@ class Input extends LitElement {
     super();
 
     this.hasError = false;
+    this.showError = false;
   }
 
   static get properties() {
@@ -20,16 +21,20 @@ class Input extends LitElement {
         type: String
       },
       value: {},
-      errorText: {
-        type: String
-      },
+      // errorText: {
+      //   type: String
+      // },
       name: {
         type: String
+      },
+      showError: {
+        type: Boolean
+      },
+      hasError: {
+        type: Boolean
       }
     };
   }
-
-  // TODO: handle mobile errors separately as it's the only exception.
 
   updateValue(event) {
     let myEvent = new CustomEvent("change", {
@@ -44,18 +49,23 @@ class Input extends LitElement {
 
   handleMobileInput(event) {
     this.limitValueLength(event);
-    this.updateValue(event);
+
     if (event.target.value.length === 11) {
       let isValid = mobileValidator(event.target.value);
 
       if (!isValid) {
         this.hasError = true;
+        this.showError = true;
       } else {
         this.hasError = false;
+        this.showError = false;
       }
     } else {
-      // this.errorText = null;
+      this.hasError = true;
+      this.showError = false;
     }
+
+    this.updateValue(event);
   }
 
   limitValueLength(event) {
@@ -79,9 +89,24 @@ class Input extends LitElement {
           placeholder="09103801020"
           @input=${this.handleMobileInput}
         />
-        <small class="error-text">${this.errorText}</small>
+        ${this.showError
+          ? html`
+              <small class="error-text">شماره تلفن‌همراه اشتباه است.</small>
+            `
+          : null}
       </div>
     `;
+  }
+
+  renderProperInput() {
+    switch (this.type) {
+      case "mobile":
+        this.renderMobileInput();
+        break;
+
+      default:
+        break;
+    }
   }
 
   render() {

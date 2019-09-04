@@ -10,6 +10,20 @@ class LoginStep extends LitElement {
     this.errors = [];
   }
 
+  static get properties() {
+    return {
+      isButtonDisabled: {
+        type: Boolean
+      },
+      phoneNumber: {
+        type: Number
+      },
+      errors: {
+        type: Array
+      }
+    };
+  }
+
   changeStep() {
     let myEvent = new CustomEvent("change-step", {
       detail: {
@@ -21,30 +35,35 @@ class LoginStep extends LitElement {
 
   handleErrors(event) {
     let { value, name, hasError } = event.detail;
-    console.log("event.detail: ", event.detail);
-
     let errors = this.errors.filter(error => error.name !== name);
 
-    errors = [
-      ...errors,
-      {
-        name,
-        value,
-        hasError
-      }
-    ];
+    if (hasError) {
+      errors = [
+        ...errors,
+        {
+          name,
+          value,
+          hasError
+        }
+      ];
+    }
 
     this.errors = errors;
-
-    console.log("this.errors: ", this.errors);
   }
 
-  checkForErrors() {}
+  checkForErrors() {
+    if (!this.errors.length) {
+      this.isButtonDisabled = false;
+    } else {
+      this.isButtonDisabled = true;
+    }
+  }
 
   handlePhoneNumber(event) {
-    this.handleErrors(event);
     let newPhoneNumber = event.detail.value;
     this.phoneNumber = newPhoneNumber;
+    this.handleErrors(event);
+    this.checkForErrors();
   }
 
   render() {
@@ -59,7 +78,7 @@ class LoginStep extends LitElement {
         label="شماره تلفن"
         name="phoneNumber"
         placeholder="۰۹۱۷۳۸۱۱۴۲۰"
-        type="number"
+        type="mobile"
         .value=${this.phoneNumber}
         @change=${this.handlePhoneNumber}
       ></fs-input>
