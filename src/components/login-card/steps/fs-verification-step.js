@@ -7,7 +7,11 @@ class VerficationStep extends LitElement {
   }
 
   static get properties() {
-    return {};
+    return {
+      phoneNumber: {
+        type: Number
+      }
+    };
   }
 
   changeStep() {
@@ -17,6 +21,33 @@ class VerficationStep extends LitElement {
       }
     });
     this.dispatchEvent(myEvent);
+  }
+
+  render() {
+    return html`
+      <div class="info-container">
+        <!-- Heading could be replaced by a photo. -->
+        <!-- <h1 class="heading">کد تایید</h1> -->
+        <h2 class="description">
+          یک کد برای شماره ${this.phoneNumber} ارسال شد
+        </h2>
+        <p class="description change-number" @click=${this.changeStep}>
+          اصلاح شماره تلفن؟
+        </p>
+        <!-- <h2 class="description">یک کد شما پیامک شد</h2> -->
+      </div>
+
+      <fs-input
+        class="input-phone"
+        label="شماره تلفن"
+        placeholder="۰۹۱۷۳۸۱۱۴۲۰"
+        type="number"
+      ></fs-input>
+
+      <div class="buttons-container">
+        <p class="description change-number">ارسال دوباره کد</p>
+      </div>
+    `;
   }
 
   static get styles() {
@@ -69,31 +100,6 @@ class VerficationStep extends LitElement {
         color: darkslategray;
         width: 3rem;
       }
-    `;
-  }
-
-  render() {
-    return html`
-      <div class="info-container">
-        <!-- Heading could be replaced by a photo. -->
-        <!-- <h1 class="heading">کد تایید</h1> -->
-        <h2 class="description">یک کد برای شماره ۰۹۱۷۳۸۱۱۴۲۰ ارسال شد</h2>
-        <p class="description change-number" @click=${this.changeStep}>
-          اصلاح شماره تلفن؟
-        </p>
-        <!-- <h2 class="description">یک کد شما پیامک شد</h2> -->
-      </div>
-
-      <fs-input
-        class="input-phone"
-        label="شماره تلفن"
-        placeholder="۰۹۱۷۳۸۱۱۴۲۰"
-        type="number"
-      ></fs-input>
-
-      <div class="buttons-container">
-        <p class="description change-number">ارسال دوباره کد</p>
-      </div>
     `;
   }
 }

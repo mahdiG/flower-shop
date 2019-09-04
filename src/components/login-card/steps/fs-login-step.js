@@ -24,6 +24,15 @@ class LoginStep extends LitElement {
     };
   }
 
+  passPhoneNumber() {
+    let myEvent = new CustomEvent("get-phone-number", {
+      detail: {
+        phoneNumber: this.phoneNumber
+      }
+    });
+    this.dispatchEvent(myEvent);
+  }
+
   changeStep() {
     let myEvent = new CustomEvent("change-step", {
       detail: {
@@ -31,6 +40,18 @@ class LoginStep extends LitElement {
       }
     });
     this.dispatchEvent(myEvent);
+  }
+
+  goNextStep() {
+    this.passPhoneNumber();
+    this.changeStep();
+  }
+
+  handlePhoneNumber(event) {
+    let newPhoneNumber = event.detail.value;
+    this.phoneNumber = newPhoneNumber;
+    this.handleErrors(event);
+    this.checkForErrors();
   }
 
   handleErrors(event) {
@@ -59,11 +80,12 @@ class LoginStep extends LitElement {
     }
   }
 
-  handlePhoneNumber(event) {
-    let newPhoneNumber = event.detail.value;
-    this.phoneNumber = newPhoneNumber;
-    this.handleErrors(event);
-    this.checkForErrors();
+  handleKeydown(event) {
+    if (event.key === "Enter") {
+      if (!this.isButtonDisabled) {
+        this.goNextStep();
+      }
+    }
   }
 
   render() {
@@ -81,11 +103,12 @@ class LoginStep extends LitElement {
         type="mobile"
         .value=${this.phoneNumber}
         @change=${this.handlePhoneNumber}
+        @keydown="${event => this.handleKeydown(event)}"
       ></fs-input>
       <button
         class="button"
         ?disabled=${this.isButtonDisabled}
-        @click="${() => this.changeStep()}"
+        @click="${() => this.goNextStep()}"
       >
         ارسال کد
       </button>

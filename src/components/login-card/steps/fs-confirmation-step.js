@@ -5,6 +5,14 @@ class ConfirmationStep extends LitElement {
     super();
   }
 
+  static get properties() {
+    return {
+      phoneNumber: {
+        type: Number
+      }
+    };
+  }
+
   changeStep(step) {
     let myEvent = new CustomEvent("change-step", {
       detail: {
@@ -12,6 +20,25 @@ class ConfirmationStep extends LitElement {
       }
     });
     this.dispatchEvent(myEvent);
+  }
+
+  render() {
+    return html`
+      <div class="info-container">
+        <!-- Heading could be replaced by a photo. -->
+        <h1 class="heading">همین شماره؟</h1>
+        <h2 class="description">${this.phoneNumber}</h2>
+      </div>
+
+      <div class="buttons-container">
+        <button class="button button-green" @click=${() => this.changeStep(2)}>
+          درسته
+        </button>
+        <button class="button button-red" @click=${() => this.changeStep(0)}>
+          اشتباهه
+        </button>
+      </div>
+    `;
   }
 
   static get styles() {
@@ -66,25 +93,6 @@ class ConfirmationStep extends LitElement {
       .button-red {
         background-color: rgba(255, 186, 212, 1);
       }
-    `;
-  }
-
-  render() {
-    return html`
-      <div class="info-container">
-        <!-- Heading could be replaced by a photo. -->
-        <h1 class="heading">همین شماره؟</h1>
-        <h2 class="description">۰۹۱۰۰۸۰۱۲۳۲</h2>
-      </div>
-
-      <div class="buttons-container">
-        <button class="button button-green" @click=${() => this.changeStep(2)}>
-          درسته
-        </button>
-        <button class="button button-red" @click=${() => this.changeStep(0)}>
-          اشتباهه
-        </button>
-      </div>
     `;
   }
 }

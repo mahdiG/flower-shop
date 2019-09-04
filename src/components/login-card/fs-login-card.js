@@ -8,11 +8,15 @@ class LoginCard extends LitElement {
     super();
 
     this.currentStep = 0;
+    this.phoneNumber = null;
   }
 
   static get properties() {
     return {
       currentStep: {
+        type: Number
+      },
+      phoneNumber: {
         type: Number
       }
     };
@@ -29,6 +33,35 @@ class LoginCard extends LitElement {
   changeStep(event) {
     let nextStep = event.detail.nextStep;
     this.currentStep = nextStep;
+  }
+
+  getPhoneNumber(event) {
+    let phoneNumber = event.detail.phoneNumber;
+    this.phoneNumber = phoneNumber;
+  }
+
+  render() {
+    return html`
+      <div class="modal-background">
+        <div class="card">
+          <fs-login-step
+            class="step ${this.isStepActive(0) ? "step-active" : null}"
+            @change-step="${event => this.changeStep(event)}"
+            @get-phone-number="${event => this.getPhoneNumber(event)}"
+          ></fs-login-step>
+          <fs-confirmation-step
+            class="step ${this.isStepActive(1) ? "step-active" : null}"
+            .phoneNumber=${this.phoneNumber}
+            @change-step=${this.changeStep}
+          ></fs-confirmation-step>
+          <fs-verfication-step
+            class="step ${this.isStepActive(2) ? "step-active" : null}"
+            .phoneNumber=${this.phoneNumber}
+            @change-step=${this.changeStep}
+          ></fs-verfication-step>
+        </div>
+      </div>
+    `;
   }
 
   static get styles() {
@@ -78,27 +111,6 @@ class LoginCard extends LitElement {
         transform: translateX(0%);
         transition: opacity 500ms;
       }
-    `;
-  }
-
-  render() {
-    return html`
-      <div class="modal-background">
-        <div class="card">
-          <fs-login-step
-            class="step ${this.isStepActive(0) ? "step-active" : null}"
-            @change-step="${event => this.changeStep(event)}"
-          ></fs-login-step>
-          <fs-confirmation-step
-            class="step ${this.isStepActive(1) ? "step-active" : null}"
-            @change-step=${this.changeStep}
-          ></fs-confirmation-step>
-          <fs-verfication-step
-            class="step ${this.isStepActive(2) ? "step-active" : null}"
-            @change-step=${this.changeStep}
-          ></fs-verfication-step>
-        </div>
-      </div>
     `;
   }
 }
