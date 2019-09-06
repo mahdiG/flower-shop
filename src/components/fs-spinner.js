@@ -29,7 +29,8 @@ class Spinner extends LitElement {
         position: fixed;
         top: 0;
         right: 0;
-        background-color: rgba(0, 0, 0, 0.1);
+        /* background-color: rgba(0, 0, 0, 0.1); */
+        background-color: rgb(128, 0, 128, 0.3);
       }
 
       .flower:not(:required) {
