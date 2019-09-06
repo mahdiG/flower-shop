@@ -11,6 +11,12 @@ class Input extends LitElement {
 
   static get properties() {
     return {
+      showError: {
+        type: Boolean
+      },
+      hasError: {
+        type: Boolean
+      },
       label: {
         type: String
       },
@@ -21,17 +27,14 @@ class Input extends LitElement {
         type: String
       },
       value: {},
-      // errorText: {
-      //   type: String
-      // },
+      errorText: {
+        type: String
+      },
       name: {
         type: String
       },
-      showError: {
-        type: Boolean
-      },
-      hasError: {
-        type: Boolean
+      maxLength: {
+        type: Number
       }
     };
   }
@@ -47,10 +50,15 @@ class Input extends LitElement {
     this.dispatchEvent(myEvent);
   }
 
+  handleInput(event) {
+    this.limitValueLength(event);
+    this.updateValue(event);
+  }
+
   handleMobileInput(event) {
     this.limitValueLength(event);
 
-    if (event.target.value.length === 11) {
+    if (event.target.value.length === this.maxLength) {
       let isValid = mobileValidator(event.target.value);
 
       if (!isValid) {
@@ -69,8 +77,7 @@ class Input extends LitElement {
   }
 
   limitValueLength(event) {
-    let maxLength = 11;
-    event.target.value = event.target.value.slice(0, maxLength);
+    event.target.value = event.target.value.slice(0, this.maxLength);
   }
 
   renderMobileInput() {
@@ -86,23 +93,71 @@ class Input extends LitElement {
         <input
           class="input"
           type="tel"
-          placeholder="09103801020"
+          .placeholder=${this.placeholder || ""}
           @input=${this.handleMobileInput}
         />
         ${this.showError
           ? html`
-              <small class="error-text">شماره تلفن‌همراه اشتباه است.</small>
+              <small class="error-text">${this.errorText}</small>
             `
           : null}
       </div>
     `;
   }
 
-  renderProperInput() {
+  renderNumberInput() {
+    return html`
+      <style>
+        .input {
+          direction: ltr;
+        }
+      </style>
+
+      <div class="container">
+        <label class="label">${this.label}</label>
+        <input
+          class="input input-loading"
+          type="number"
+          .placeholder=${this.placeholder || ""}
+          @input=${this.handleInput}
+        />
+        ${this.hasError
+          ? html`
+              <small class="error-text">${this.errorText}</small>
+            `
+          : null}
+      </div>
+    `;
+  }
+
+  renderDefaultInput() {
+    return html`
+      <div class="container">
+        <label class="label">${this.label}</label>
+        <input
+          class="input"
+          type="tel"
+          .placeholder=${this.placeholder || ""}
+          @input=${this.handleInput}
+        />
+        ${this.hasError
+          ? html`
+              <small class="error-text">${this.errorText}</small>
+            `
+          : null}
+      </div>
+    `;
+  }
+
+  renderInput() {
+    console.log("this.type: ", this.type);
+
     switch (this.type) {
       case "mobile":
-        this.renderMobileInput();
-        break;
+        return this.renderMobileInput();
+
+      case "number":
+        return this.renderNumberInput();
 
       default:
         break;
@@ -125,12 +180,16 @@ class Input extends LitElement {
         @input=${this.limitValueLength}
       /> -->
 
-      ${this.renderMobileInput()}
+      ${this.renderInput()}
     `;
   }
 
   static get styles() {
     return css`
+      :host {
+        --background-color: rgba(250, 250, 250, 0.8);
+      }
+
       .container {
         display: flex;
         flex-direction: column;
@@ -145,7 +204,7 @@ class Input extends LitElement {
         /* border: 1px solid darkslategray; */
         border-radius: var(--border-radius);
         padding: calc(var(--spacing) / 1.5);
-        background-color: rgba(250, 250, 250, 0.8);
+        background-color: var(--background-color);
       }
       /* remove numberic input arrows */
       input::-webkit-outer-spin-button,

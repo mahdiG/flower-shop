@@ -50,11 +50,11 @@ class LoginStep extends LitElement {
   handlePhoneNumber(event) {
     let newPhoneNumber = event.detail.value;
     this.phoneNumber = newPhoneNumber;
-    this.handleErrors(event);
+    this.storeErrors(event);
     this.checkForErrors();
   }
 
-  handleErrors(event) {
+  storeErrors(event) {
     let { value, name, hasError } = event.detail;
     let errors = this.errors.filter(error => error.name !== name);
 
@@ -80,11 +80,12 @@ class LoginStep extends LitElement {
     }
   }
 
-  handleKeydown(event) {
+  handleEnter(event) {
     if (event.key === "Enter") {
       if (!this.isButtonDisabled) {
         this.goNextStep();
       }
+      this.enteredCode.length;
     }
   }
 
@@ -97,13 +98,15 @@ class LoginStep extends LitElement {
       </div>
       <fs-input
         class="input-phone"
+        type="mobile"
         label="شماره تلفن"
         name="phoneNumber"
         placeholder="۰۹۱۷۳۸۱۱۴۲۰"
-        type="mobile"
+        errorText="شماره تلفن‌همراه اشتباه است"
         .value=${this.phoneNumber}
+        .maxLength=${11}
         @change=${this.handlePhoneNumber}
-        @keydown="${event => this.handleKeydown(event)}"
+        @keydown="${event => this.handleEnter(event)}"
       ></fs-input>
       <button
         class="button"

@@ -94,13 +94,14 @@ class LoginCard extends LitElement {
         box-shadow: 0px 0px 10px 0px rgb(142, 142, 142, 1);
         border-radius: var(--border-radius);
         background-color: rgba(250, 250, 250, 0.8);
-        width: calc(1.5 * 25vw);
-        height: calc(1 * 25vw);
+        width: 80vw;
+        height: 40vh;
         z-index: 3;
       }
 
       .step {
         width: 100%;
+        height: 100%;
         position: absolute;
         opacity: 0;
         transform: translateX(2000px);
@@ -110,6 +111,14 @@ class LoginCard extends LitElement {
         opacity: 1;
         transform: translateX(0%);
         transition: opacity 500ms;
+      }
+
+      /* Large devices (laptops/desktops, 992px and up) */
+      @media only screen and (min-width: 992px) {
+        .card {
+          width: calc(1.5 * 25vw);
+          height: calc(1 * 25vw);
+        }
       }
     `;
   }
