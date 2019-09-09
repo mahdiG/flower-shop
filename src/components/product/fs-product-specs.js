@@ -9,14 +9,14 @@ class ProductSpecs extends LitElement {
 
     this.likeCount = 600;
     this.isLiked = false;
-    this.isInCart = true;
+    this.inCartCount = 0;
   }
 
   static get properties() {
     return {
       likeCount: { type: Number },
       isLiked: { type: Boolean },
-      isInCart: { type: Boolean }
+      inCartCount: { type: Boolean }
     };
   }
 
@@ -33,8 +33,9 @@ class ProductSpecs extends LitElement {
       this.likeCount -= 1;
     }
   }
-  toggleCart() {
-    this.isInCart = !this.isInCart;
+  handleCartChange(event) {
+    console.log("cart change: ", event.detail.value);
+    this.inCartCount = event.detail.value;
   }
 
   render() {
@@ -75,7 +76,8 @@ class ProductSpecs extends LitElement {
           <fs-product-card
             .isLiked=${this.isLiked}
             .likeCount=${this.likeCount}
-            .isInCart=${this.isInCart}
+            .inCartCount=${this.inCartCount}
+            @cart-change=${this.handleCartChange}
           ></fs-product-card>
         </div>
       </div>

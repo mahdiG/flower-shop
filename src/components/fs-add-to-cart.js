@@ -3,8 +3,6 @@ import { LitElement, html, css } from "lit-element";
 class AddToCart extends LitElement {
   constructor() {
     super();
-
-    this.count = 0;
   }
 
   static get properties() {
@@ -16,12 +14,20 @@ class AddToCart extends LitElement {
   }
 
   increment() {
-    this.count = this.count + 1;
-    console.log("this.count: ", this.count);
+    let myEvent = new CustomEvent("increment", {
+      detail: {
+        value: this.count + 1
+      }
+    });
+    this.dispatchEvent(myEvent);
   }
   decrement() {
-    this.count = this.count - 1;
-    console.log("this.count: ", this.count);
+    let myEvent = new CustomEvent("decrement", {
+      detail: {
+        value: this.count - 1
+      }
+    });
+    this.dispatchEvent(myEvent);
   }
 
   render() {

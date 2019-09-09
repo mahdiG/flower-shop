@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit-element";
-import "./fs-add-to-cart"
+import "./fs-add-to-cart";
+import "./fs-badge";
 
 class ProductCard extends LitElement {
   constructor() {
@@ -10,7 +11,7 @@ class ProductCard extends LitElement {
     return {
       likeCount: { type: Number },
       isLiked: { type: Boolean },
-      isInCart: { type: Boolean }
+      inCartCount: { type: Number }
     };
   }
 
@@ -23,18 +24,20 @@ class ProductCard extends LitElement {
     this.dispatchEvent(myEvent);
   }
 
-  toggleCart() {
-    // let myEvent = new CustomEvent("", {
-    //   detail: {
-    //     value: !this.isLiked
-    //   }
-    // });
-    // this.dispatchEvent(myEvent);
+  passCartChange(event) {
+    let myEvent = new CustomEvent("cart-change", {
+      detail: {
+        value: event.detail.value
+      }
+    });
+    this.dispatchEvent(myEvent);
   }
 
   render() {
     return html`
       <div class="card">
+        <fs-badge class="badge" count=${this.inCartCount}></fs-badge>
+
         <div class="card-content">
           <h2 class="price">گل بنفش</h2>
           <p class="price">از فروشگاه رنگین‌کمان</p>
@@ -43,7 +46,11 @@ class ProductCard extends LitElement {
             ۳۰۰،۰۰۰ تومان
           </p>
           <div class="icons-container">
-            <fs-add-to-cart></fs-add-to-cart>
+            <fs-add-to-cart
+              .count=${this.inCartCount}
+              @increment=${this.passCartChange}
+              @decrement=${this.passCartChange}
+            ></fs-add-to-cart>
             <div class="like">
               <div class="icon-container" @click=${this.toggleLike}>
                 <div class="icon heart-icon">
@@ -68,12 +75,19 @@ class ProductCard extends LitElement {
       :host {
         width: 100%;
       }
+
+      .badge {
+        position: absolute;
+        top: -5px;
+        left: -5px;
+      }
       .card {
         display: flex;
         background-color: rgba(250, 250, 250, 0.2);
         box-shadow: 0px 0px 5px 0px rgb(142, 142, 142, 0.1);
         border-radius: var(--border-radius);
-        overflow: hidden;
+        /* overflow: hidden; */
+        position: relative;
       }
 
       .card-content {
