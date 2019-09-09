@@ -102,6 +102,8 @@ class ProductCard extends LitElement {
         background-position: center;
         background-image: url("/assets/images/pinkflower.jpg");
         background-color: whitesmoke;
+        border-top-left-radius: var(--border-radius);
+        border-bottom-left-radius: var(--border-radius);
       }
       .price {
         margin-bottom: 0;
