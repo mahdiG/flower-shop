@@ -38,7 +38,7 @@ class Badge extends LitElement {
         border-radius: 100%;
         background-color: var(--red);
         color: white;
-        font-size: calc(var(--size) / 1.5);
+        font-size: calc(var(--size) / 2);
         transform: scale(0);
         transition: transform 500ms;
       }
