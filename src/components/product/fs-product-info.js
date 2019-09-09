@@ -63,7 +63,7 @@ class ProductInfo extends LitElement {
   render() {
     return html`
       <div class="main-container">
-        <fs-login-card></fs-login-card>
+        <!-- <fs-login-card></fs-login-card> -->
         <div class="right-side">
           <fs-slide-card></fs-slide-card>
         </div>

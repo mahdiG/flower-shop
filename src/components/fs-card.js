@@ -25,7 +25,7 @@ class Card extends LitElement {
       .card {
         width: calc(1vw * var(--scale));
         height: calc(1.3vw * var(--scale));
-        border-radius: 2px;
+        border-radius: var(--border-radius);
         box-shadow: 0px 0px 10px 0px rgb(142, 142, 142);
 
         display: flex;
