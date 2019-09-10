@@ -40,7 +40,7 @@ class ProductCard extends LitElement {
 
         <div class="card-content">
           <h2 class="price">گل بنفش</h2>
-          <p class="price">از فروشگاه رنگین‌کمان</p>
+          <!-- <p class="price">از فروشگاه رنگین‌کمان</p> -->
           <h3 class="price">۲۰۰،۰۰۰ تومان</h3>
           <p class="price-discount">
             ۳۰۰،۰۰۰ تومان
@@ -110,7 +110,7 @@ class ProductCard extends LitElement {
       }
       .price-discount {
         text-decoration: line-through;
-        color: gray;
+        color: var(--gray);
         margin-top: 0;
         font-size: small;
       }

@@ -22,6 +22,7 @@ class App extends LitElement {
         --box-shadow: 0px 0px 5px 0px rgb(142, 142, 142, 0.1);
         --green: rgb(107, 255, 159);
         --red: rgb(235, 52, 116);
+        --gray: gray;
       }
     `;
   }
