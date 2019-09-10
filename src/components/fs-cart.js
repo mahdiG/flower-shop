@@ -225,6 +225,10 @@ class Cart extends LitElement {
         .checkout-card {
           /* background-color: rgba(250, 250, 250, 0.6); */
         }
+
+        .vertical-line {
+          display: none;
+        }
       }
 
       /* Large devices (laptops/desktops, 992px and up) */
