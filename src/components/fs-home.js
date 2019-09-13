@@ -11,58 +11,58 @@ class Home extends LitElement {
         id: 1,
         name: "گل سفید",
         price: "۲۰۰۰۰",
-        url: "/assets/images/whiteflower.jpg"
+        url: "/src/assets/images/whiteflower.jpg"
       },
       {
         id: 2,
         name: "گل صورتی",
         price: "۴۰۰۰۰",
-        url: "/assets/images/pinkflower.jpg"
+        url: "/src/assets/images/pinkflower.jpg"
       },
       {
         id: 3,
         name:
           " شتخسی بشسیب شس یب شس یب شسی بش سی بش سیب ش سی ب شس یبشسیبگل آفتابگردووووووووووووووووووووووووووووووووووووووووون",
         price: "۱۲۰۰۰۰",
-        url: "/assets/images/sunflower.jpg"
+        url: "/src/assets/images/sunflower.jpg"
       },
       {
         id: 3,
         name: "گل سفید",
         price: "۲۰۰۰۰",
-        url: "/assets/images/whiteflower.jpg"
+        url: "/src/assets/images/whiteflower.jpg"
       },
       {
         id: 3,
         name: "گل صورتی",
         price: "۴۰۰۰۰",
-        url: "/assets/images/pinkflower.jpg"
+        url: "/src/assets/images/pinkflower.jpg"
       },
       {
         id: 3,
         name:
           " شتخسی بشسیب شس یب شس یب شسی بش سی بش سیب ش سی ب شس یبشسیبگل آفتابگردووووووووووووووووووووووووووووووووووووووووون",
         price: "۱۲۰۰۰۰",
-        url: "/assets/images/sunflower.jpg"
+        url: "/src/assets/images/sunflower.jpg"
       },
       {
         id: 3,
         name: "گل سفید",
         price: "۲۰۰۰۰",
-        url: "/assets/images/whiteflower.jpg"
+        url: "/src/assets/images/whiteflower.jpg"
       },
       {
         id: 3,
         name: "گل صورتی",
         price: "۴۰۰۰۰",
-        url: "/assets/images/pinkflower.jpg"
+        url: "/src/assets/images/pinkflower.jpg"
       },
       {
         id: 3,
         name:
           " شتخسی بشسیب شس یب شس یب شسی بش سی بش سیب ش سی ب شس یبشسیبگل آفتابگردووووووووووووووووووووووووووووووووووووووووون",
         price: "۱۲۰۰۰۰",
-        url: "/assets/images/sunflower.jpg"
+        url: "/src/assets/images/sunflower.jpg"
       }
     ];
   }

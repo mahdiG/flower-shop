@@ -7,9 +7,9 @@ class SlideCard extends LitElement {
     super();
 
     this.images = [
-      "/assets/images/whiteflower.jpg",
-      "/assets/images/pinkflower.jpg",
-      "/assets/images/sunflower.jpg"
+      "/src/assets/images/whiteflower.jpg",
+      "/src/assets/images/pinkflower.jpg",
+      "/src/assets/images/sunflower.jpg"
     ];
 
     this.selectedImage = 0;

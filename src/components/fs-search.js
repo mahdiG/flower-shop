@@ -29,7 +29,7 @@ class Search extends LitElement {
     return html`
       <div class="search">
         <input class="invisible-input" type="text" placeholder="جستجو کنید" />
-        <img class="search-icon" src="/assets/icons/search.svg" />
+        <img class="search-icon" src="/src/assets/icons/search.svg" />
       </div>
     `;
   }

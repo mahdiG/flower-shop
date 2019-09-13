@@ -60,7 +60,7 @@ class ProductCard extends LitElement {
               <p class="like-count">${this.likeCount}</p>
             </div>
             <div class="icon-container">
-              <img class="icon share-icon" src="/assets/icons/share.svg" />
+              <img class="icon share-icon" src="/src/assets/icons/share.svg" />
             </div>
           </div>
         </div>
@@ -100,7 +100,7 @@ class ProductCard extends LitElement {
         flex-basis: 1px;
         background-size: cover;
         background-position: center;
-        background-image: url("/assets/images/pinkflower.jpg");
+        background-image: url("/src/assets/images/pinkflower.jpg");
         background-color: whitesmoke;
         border-top-left-radius: var(--border-radius);
         border-bottom-left-radius: var(--border-radius);

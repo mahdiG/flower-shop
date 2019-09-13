@@ -42,8 +42,8 @@ class Header extends LitElement {
     }
   }
 
-  navigateToCart(){
-    Router.go("/cart")
+  navigateToCart() {
+    Router.go("/cart");
   }
 
   render() {
@@ -57,7 +57,7 @@ class Header extends LitElement {
         <div class="left-icons">
           <fs-cart-icon @click="${this.navigateToCart}"></fs-cart-icon>
           <!-- <div class="avatar">
-            <img class="person-icon" src="/assets/icons/person.svg" />
+            <img class="person-icon" src="/src/assets/icons/person.svg" />
           </div> -->
         </div>
       </div>
