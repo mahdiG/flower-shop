@@ -54,13 +54,8 @@ class Card extends LitElement {
         flex-direction: column;
         justify-content: space-evenly;
 
-        top: 100%;
+        /* top: 100%; */
         transition: top 500ms;
-      }
-
-      .card:hover .card-content {
-        top: 0;
-        transition: all 500ms;
       }
 
       .name,
@@ -70,6 +65,17 @@ class Card extends LitElement {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+      }
+
+      /* Large devices (laptops/desktops, 992px and up) */
+      @media only screen and (min-width: 992px) {
+        .card-content {
+          top: 100%;
+        }
+        .card:hover .card-content {
+          top: 0;
+          transition: all 500ms;
+        }
       }
     `;
   }
