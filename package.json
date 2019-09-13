@@ -9,6 +9,6 @@
   "scripts": {
     "start": "yarn serve | yarn watch",
     "serve": "polymer serve --hostname 0.0.0.0 -p 8081",
-    "watch": "browser-sync start --proxy 0.0.0.0:8081 --open  --files 'index.html, src/**/*.js, images/*'"
+    "watch": "browser-sync start  --proxy 0.0.0.0:8081 --open --no-notify  --files 'index.html, src/**/*.js, images/*' "
   }
 }
