@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element";
+import { Router } from "@vaadin/router";
 import "./icons/fs-menu-icon.js";
 import "./fs-search.js";
 
@@ -17,8 +18,27 @@ class Header extends LitElement {
     };
   }
 
+  firstUpdated() {
+    console.log("header updated");
+
+    window.addEventListener("vaadin-router-location-changed", event =>
+      this.handleMenuState(event)
+    );
+  }
+
+  handleMenuState(event) {
+    let pathname = event.detail.location.pathname;
+    if (pathname !== "/") {
+      this.showBack = true;
+    } else {
+      this.showBack = false;
+    }
+  }
+
   handleMenuClick() {
-    this.showBack = !this.showBack;
+    if (this.showBack) {
+      Router.go("/home");
+    }
   }
 
   render() {
