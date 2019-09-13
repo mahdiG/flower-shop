@@ -84,7 +84,7 @@ class Home extends LitElement {
   static get styles() {
     return css`
       .home {
-        margin: var(--spacing);
+        margin: calc(var(--spacing) * 2);
       }
       .grid-item {
         cursor: pointer;

@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element";
 import { Router } from "@vaadin/router";
 import "./icons/fs-menu-icon.js";
+import "./icons/fs-cart-icon.js";
 import "./fs-search.js";
 
 class Header extends LitElement {
@@ -41,6 +42,10 @@ class Header extends LitElement {
     }
   }
 
+  navigateToCart(){
+    Router.go("/cart")
+  }
+
   render() {
     return html`
       <div class="header">
@@ -49,8 +54,11 @@ class Header extends LitElement {
           @click=${this.handleMenuClick}
         ></fs-menu-icon>
         <fs-search></fs-search>
-        <div class="avatar">
-          <img class="person-icon" src="/assets/icons/person.svg" />
+        <div class="left-icons">
+          <fs-cart-icon @click="${this.navigateToCart}"></fs-cart-icon>
+          <!-- <div class="avatar">
+            <img class="person-icon" src="/assets/icons/person.svg" />
+          </div> -->
         </div>
       </div>
     `;
@@ -66,10 +74,11 @@ class Header extends LitElement {
         direction: rtl;
         height: 4rem;
         background-color: rgba(250, 250, 250, 0.3);
-        /* box-shadow: 0px 0px 5px 0px rgb(142, 142, 142); */
+        padding: 0 var(--spacing);
+        box-shadow: 0px 0px 5px 0px rgb(142, 142, 142);
       }
-      .menu-icon {
-        margin-right: 1rem;
+      .left-icons {
+        display: flex;
       }
       .avatar {
         width: 2rem;
@@ -80,7 +89,7 @@ class Header extends LitElement {
         align-items: center;
         justify-content: center;
         background-size: cover;
-        margin-left: 1rem;
+        margin-right: var(--spacing);
       }
     `;
   }
