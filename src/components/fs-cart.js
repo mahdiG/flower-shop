@@ -222,10 +222,6 @@ class Cart extends LitElement {
           margin-top: var(--spacing);
         }
 
-        .checkout-card {
-          /* background-color: rgba(250, 250, 250, 0.6); */
-        }
-
         .vertical-line {
           display: none;
         }

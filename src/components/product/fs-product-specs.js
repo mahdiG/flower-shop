@@ -160,6 +160,10 @@ class ProductSpecs extends LitElement {
           /* height: calc(100vh - 4rem); */
           height: 100vh;
         }
+
+        fs-product-card {
+          width: 90%;
+        }
       }
     `;
   }
