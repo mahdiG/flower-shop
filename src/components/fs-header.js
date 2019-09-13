@@ -1,9 +1,39 @@
 import { LitElement, html, css } from "lit-element";
+import "./icons/fs-menu-icon.js";
 import "./fs-search.js";
 
 class Header extends LitElement {
   constructor() {
     super();
+
+    this.showBack = false;
+  }
+
+  static get properties() {
+    return {
+      showBack: {
+        type: Boolean
+      }
+    };
+  }
+
+  handleMenuClick() {
+    this.showBack = !this.showBack;
+  }
+
+  render() {
+    return html`
+      <div class="header">
+        <fs-menu-icon
+          ?showBack=${this.showBack}
+          @click=${this.handleMenuClick}
+        ></fs-menu-icon>
+        <fs-search></fs-search>
+        <div class="avatar">
+          <img class="person-icon" src="/assets/icons/person.svg" />
+        </div>
+      </div>
+    `;
   }
 
   static get styles() {
@@ -32,18 +62,6 @@ class Header extends LitElement {
         background-size: cover;
         margin-left: 1rem;
       }
-    `;
-  }
-
-  render() {
-    return html`
-      <div class="header">
-        <img class="menu-icon" src="/assets/icons/menu.svg" />
-        <fs-search></fs-search>
-        <div class="avatar">
-          <img class="person-icon" src="/assets/icons/person.svg" />
-        </div>
-      </div>
     `;
   }
 }
