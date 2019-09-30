@@ -225,6 +225,10 @@ class Cart extends LitElement {
         .vertical-line {
           display: none;
         }
+
+        .product-card {
+          width: 100%;
+        }
       }
 
       /* Large devices (laptops/desktops, 992px and up) */
@@ -235,12 +239,12 @@ class Cart extends LitElement {
           /* height: 100vh; */
         }
 
-        fs-product-card {
-          width: 65%;
+        .right-side {
+          padding: var(--spacing);
         }
 
         .checkout-card {
-          width: 70%;
+          width: 25rem;
         }
       }
     `;

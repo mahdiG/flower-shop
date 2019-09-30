@@ -73,7 +73,7 @@ class ProductCard extends LitElement {
   static get styles() {
     return css`
       :host {
-        width: 100%;
+        --width: 35rem;
       }
 
       .badge {
@@ -88,12 +88,17 @@ class ProductCard extends LitElement {
         border-radius: var(--border-radius);
         /* overflow: hidden; */
         position: relative;
+        width: var(--width);
+        height: calc(var(--width) / 1.9);
       }
 
       .card-content {
         flex-grow: 1;
         flex-basis: 1px;
         padding: calc(var(--spacing) * 2);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
       }
       .card-image {
         flex-grow: 1.1;
