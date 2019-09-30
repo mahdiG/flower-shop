@@ -74,6 +74,7 @@ class ProductSpecs extends LitElement {
         <fs-vertical-line></fs-vertical-line>
         <div class="left-side">
           <fs-product-card
+            class="product-card"
             .isLiked=${this.isLiked}
             .likeCount=${this.likeCount}
             .inCartCount=${this.inCartCount}
@@ -139,6 +140,10 @@ class ProductSpecs extends LitElement {
         margin-left: calc(var(--spacing) / 2);
       }
 
+      .product-card {
+        width: 100%;
+      }
+
       fs-slide-card {
         --scale: 85;
       }
@@ -159,6 +164,9 @@ class ProductSpecs extends LitElement {
           flex-direction: row;
           /* height: calc(100vh - 4rem); */
           height: 100vh;
+        }
+        .product-card {
+          width: unset;
         }
       }
     `;
